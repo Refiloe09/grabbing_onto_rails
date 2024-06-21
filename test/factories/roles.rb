@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :role do
-    role { "MyString" }
-    user { nil }
-    project { nil }
+    role { Role.keys.sample }
+    user 
+    project 
   end
 end

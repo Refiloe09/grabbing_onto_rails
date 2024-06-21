@@ -1,6 +1,16 @@
 FactoryBot.define do
   factory :project do
-    name { "MyString" }
-    description { "MyText" }
+    name { Faker::Lorem.word }
+    description { Faker::Lorem.paragraph }
+
+    factory :projects_with_tasks do
+      transient do
+        tasks_count { 5 }
+      end
+
+      after(:create) do |project, context|
+        create_list(:task, context.tasks_count, project:)
+      end
+    end
   end
 end
